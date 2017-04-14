@@ -1,0 +1,36 @@
+<template name="App_people">
+    {{#if people}}
+        <div class="row">
+            <div class="col-sm-12">
+                {{#each people}}
+                    <div class="w3-card-24">
+                        <figure>
+                            <div class="visit-content">
+                                <div class="row">
+                                    <div class="col-sm-2 col-xs-3">
+                                        <img class="people-thumbnail" src="{{getPersonPhoto}}" />
+                                    </div>
+                                    <div class="col-sm-5 col-xs-9">
+                                        <h3>{{name}}</h3>
+                                    </div>
+                                    <div class="col-sm-5 col-xs-10 offset-xs-1 pull-right">
+                                        <div class="togglebutton">
+                                            <label>
+                                                <input type="checkbox" class="auto-allow-person" {{isAutoAllowChecked}} />Allow Auto Entry
+                                            </label>
+                                        </div>
+                                        <button class="btn btn-flat btn-danger remove-person">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </figure>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    {{else}}
+        <p class="text-warning bg-warning">
+            Oops! Nobody is there in your directory! Call some guests over.
+        </p>
+    {{/if}}
+</template>

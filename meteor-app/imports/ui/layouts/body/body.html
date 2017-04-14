@@ -1,0 +1,9 @@
+<template name="App_body">
+  {{> appNav}}
+  <div class="content-wrapper">
+    <section class="content container-fluid">
+      {{> Template.dynamic template=main}}
+    </section>
+    {{> lockFAB}}
+  </div>
+</template>

@@ -1,0 +1,79 @@
+<template name="App_visits">
+    {{#if visits}}
+        <div class="row">
+            {{#each visits}}
+                <div class="col-sm-4" data-visit-id="{{_id}}">
+                    <div class="w3-card-24">
+                        <figure class="front">
+                            <div class="visit-image">
+                                <img src="{{photo}}" alt="no image...">
+                                {{#if personId}}
+                                    <h4 class="card-image-title alpha60">
+                                        {{getName personId}} {{getConfidence}}
+                                    </h4>
+                                {{else}}
+                                    <h3 class="card-image-title alpha60">
+                                        Stranger
+                                    </h3>
+                                {{/if}}
+                            </div>
+
+                            <div class="visit-content">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="pull-right">
+                                            {{{getTime timestamp}}}&nbsp;&nbsp;
+                                            <i class="fa fa-2x fa-info-circle"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h4>
+                                    {{#if entryAllowed}}
+                                        <i class="fa fa-unlock"></i>
+                                        <span class="text-success bg-sucess">Door was opened</span>
+                                    {{else}}
+                                        <i class="fa fa-lock"></i>
+                                        <span class="text-danger bg-danger">
+                                            Door {{#if isValidVisit}}is{{else}}was{{/if}} NOT opened
+                                        </span>
+                                    {{/if}}
+                                </h4>
+                            </div>
+
+                            <footer>
+                                {{#if showOpenDoorBtn}}
+                                    <button class="btn btn-flat btn-success open-door">Open Door</button>
+                                {{/if}}
+                            </footer>
+
+                        </figure>
+                        <figure class="back">
+                            <div class="visit-image">
+                                <div class="visit-content">
+                                    {{#unless personId}}
+                                        <input data-visit-id="{{_id}}" class="form-control typeahead" name="person" type="text"
+                                               placeholder="Identify this person"
+                                               autocomplete="off" spellcheck="off"
+                                               data-highlight="true" data-limit="10"
+                                               data-source="searchPeople" data-select="personSelected" />
+                                    {{/unless}}
+                                </div>
+                            </div>
+                            <div class="visit-content">
+                            </div>
+                            <footer>
+                                <button class="btn btn-flat btn-default flip-card">Back</button>
+                                <button class="btn btn-flat btn-danger remove-visit">Delete</button>
+                            </footer>
+                        </figure>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    {{else}}
+        <p class="text-warning bg-warning">
+            Oops! Nobody has visited you yet! Call some guests over.
+        </p>
+    {{/if}}
+</template>

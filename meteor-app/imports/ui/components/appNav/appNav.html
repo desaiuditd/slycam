@@ -1,0 +1,33 @@
+<template name="appNav">
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{pathFor 'App.home'}}">
+                    <img alt="SlyCam" src="/img/logo.png" />
+                    SlyCam
+                </a>
+            </div>
+            <div class="navbar-collapse collapse navbar-responsive-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="{{isActiveRoute 'App.home'}}">
+                        <a href="{{pathFor 'App.home'}}"> <i class="material-icons">dashboard</i> <span>Dashboard</span></a>
+                    </li>
+                    <li class="{{isActiveRoute 'App.visits'}}">
+                        <a href="{{pathFor 'App.visits'}}"> <i class="material-icons">transfer_within_a_station</i> <span>Visits</span></a>
+                    </li>
+                    <li class="{{isActiveRoute 'App.people'}}">
+                        <a href="{{pathFor 'App.people'}}"> <i class="material-icons">people</i> <span>People</span></a>
+                    </li>
+                    <li class="{{isActiveRoute 'App.settings'}}">
+                        <a href="{{pathFor 'App.settings'}}"> <i class="material-icons">settings</i> <span>Settings</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</template>
